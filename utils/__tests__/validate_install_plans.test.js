@@ -9,7 +9,7 @@ const githubHelpers = require('../github-api-helpers');
 const nrGraphqlHelpers = require('../nr-graphql-helpers');
 
 jest.mock('@actions/core');
-jest.spyOn(global.console, 'error').mockImplementation(() => {});
+jest.spyOn(global.console, 'error').mockImplementation(() => { });
 
 jest.mock('../github-api-helpers', () => ({
   ...jest.requireActual('../github-api-helpers'),
@@ -53,13 +53,15 @@ const mockGraphqlRequestBody = (variables = {}) => ({
       os: ['LINUX', 'WINDOWS'],
     },
     primary: {
-      mode: 'TARGETED',
-      destination: 'test-install-installer',
+      targeted: {
+        recipeName: 'test-install-installer',
+      }
     },
     fallback: {
-      mode: 'LINK',
-      destination:
-        'https://docs.newrelic.com/docs/infrastructure/install-infrastructure-agent/linux-installation/install-infrastructure-monitoring-agent-linux/#manual-install',
+      link: {
+        url:
+          'https://docs.newrelic.com/docs/infrastructure/install-infrastructure-agent/linux-installation/install-infrastructure-monitoring-agent-linux/#manual-install',
+      }
     },
     ...variables,
   },
@@ -105,7 +107,7 @@ describe('Action: validate install plan id', () => {
   test('errors with invalid install plan', async () => {
     const files = mockGithubAPIFiles([invalidInstallFilename1]);
     const requestBody = mockGraphqlRequestBody({
-      fallback: { mode: 'LINK', destination: 'invalid-url' },
+      fallback: { link: { url: 'invalid-url' } },
     });
     const response = mockGraphqlResponse({
       errors: [
