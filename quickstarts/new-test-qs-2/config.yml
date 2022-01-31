@@ -1,4 +1,4 @@
-id: 2c545715-246e-47dc-a490-c364391a3300
+id: fab59021-39d7-466a-a577-0949593c0af2
 # Name of the quickstart (required)
 name: new-rest-quickstart
 
@@ -30,7 +30,7 @@ keywords:
 # Reference to install plans located under /install directory
 # Allows us to construct reusable "install plans" and just use their ID in the quickstart config
 installPlans:
-  - infra-test
+  - infra-test-2
 
 documentation:
   - name: Installation Docs
