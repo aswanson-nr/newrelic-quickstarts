@@ -76,25 +76,25 @@ jobs:
         env:
           NR_API_URL: ${{ secrets.NR_API_URL_STAGING }}
           NR_API_TOKEN: ${{ secrets.NR_API_TOKEN_STAGING }}
-          URL: https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls/${{ github.event.pull_request.number }}/files
         run: |
-          cd utils && yarn create-validate-install-plans ${URL} ${DRY_RUN}
+          URL="https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls/${{ github.event.pull_request.number }}/files"
+          cd utils && yarn create-validate-install-plans $URL ${DRY_RUN}
 
       - name: Update install plans - production
         env:
           NR_API_URL: ${{ secrets.NR_API_URL }}
           NR_API_TOKEN: ${{ secrets.NR_API_TOKEN }}
-          URL: https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls/${{ github.event.pull_request.number }}/files
         run: |
-          cd utils && yarn create-validate-install-plans ${URL} ${DRY_RUN}
+          URL="https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls/${{ github.event.pull_request.number }}/files"
+          cd utils && yarn create-validate-install-plans $URL ${DRY_RUN}
 
       - name: Update install plans - EU
         env:
           NR_API_URL: ${{ secrets.NR_API_URL_EU }}
           NR_API_TOKEN: ${{ secrets.NR_API_TOKEN_EU }}
-          URL: https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls/${{ github.event.pull_request.number }}/files
         run: |
-          cd utils && yarn create-validate-install-plans ${URL} ${DRY_RUN}
+          URL="https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls/${{ github.event.pull_request.number }}/files"
+          cd utils && yarn create-validate-install-plans $URL ${DRY_RUN}
       
   submit-quickstarts:
     name: Submit quickstarts
@@ -121,22 +121,22 @@ jobs:
         env:
           NR_API_URL: ${{ secrets.NR_API_URL_STAGING }}
           NR_API_TOKEN: ${{ secrets.NR_API_TOKEN_STAGING }}
-          URL: https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls/${{ github.event.pull_request.number }}/files
         run: |
-          cd utils && yarn create-validate-pr-quickstarts ${URL} ${DRY_RUN}
+          URL="https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls/${{ github.event.pull_request.number }}/files"
+          cd utils && yarn create-validate-pr-quickstarts $URL ${DRY_RUN}
 
       - name: Update quickstarts - production
         env:
           NR_API_URL: ${{ secrets.NR_API_URL }}
           NR_API_TOKEN: ${{ secrets.NR_API_TOKEN}}
-          URL: https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls/${{ github.event.pull_request.number }}/files
         run: |
-          cd utils && yarn create-validate-pr-quickstarts ${URL} ${DRY_RUN}
+          URL="https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls/${{ github.event.pull_request.number }}/files"
+          cd utils && yarn create-validate-pr-quickstarts $URL ${DRY_RUN}
 
       - name: Update quickstarts - EU
         env:
           NR_API_URL: ${{ secrets.NR_API_URL_EU }}
           NR_API_TOKEN: ${{ secrets.NR_API_TOKEN_EU }}
-          URL: https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls/${{ github.event.pull_request.number }}/files
         run: |
-          cd utils && yarn create-validate-pr-quickstarts ${URL} ${DRY_RUN}
+          URL="https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls/${{ github.event.pull_request.number }}/files"
+          cd utils && yarn create-validate-pr-quickstarts $URL ${DRY_RUN}
