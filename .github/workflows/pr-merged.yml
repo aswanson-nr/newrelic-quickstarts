@@ -7,15 +7,14 @@ env:
   DRY_RUN: false
 
 on:
-  pull_request:
-    branches:
-      - main
-    types: [closed]
+  workflow_run:
+    workflows: ["Submit Gate"]
+    types:
+      - completed
 
 jobs:
   generate-uuid:
     name: Generate UUID
-    if: ${{github.event.pull_request.merged}}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -46,17 +45,73 @@ jobs:
           git diff-index --quiet HEAD ./quickstarts/* || git commit -m 'chore: generate UUID(s) [skip ci]'
           echo "::set-output name=commit::true"
 
+      - name: Temporarily disable branch protections
+        id: disable-branch-protection
+        if: always()
+        uses: actions/github-script@v1
+        with:
+          github-token: ${{ secrets.OPENSOURCE_BOT_TOKEN }}
+          previews: luke-cage-preview
+          script: |
+            const result = await github.repos.updateBranchProtection({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              branch: 'main',
+              required_status_checks: null,
+              restrictions: null,
+              enforce_admins: null,
+              required_pull_request_reviews: null
+            })
+            console.log("Result:", result)
+
       - name: Push Commit
         if: steps.commit-changes.outputs.commit == 'true'
         run: git push origin HEAD
 
+      - name: Re-enable branch protections
+        id: enable-branch-protection
+        if: always()
+        uses: actions/github-script@v1
+        with:
+          github-token: ${{ secrets.OPENSOURCE_BOT_TOKEN }}
+          previews: luke-cage-preview
+          script: |
+            const result = await github.repos.updateBranchProtection({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              branch: 'main',
+              required_status_checks: {
+                strict: true,
+                contexts: []
+              },
+              restrictions: {
+                "users":[],
+                "teams":[],
+                "apps":[]
+              },
+              enforce_admins: null,
+              required_pull_request_reviews: {
+                dismiss_stale_reviews: true,
+                required_approving_review_count: 1,
+                dismissal_restrictions: {
+                  users: [],
+                  teams: []
+                }
+              }
+            })
+            console.log("Result:", result)
 
   submit-install-plans:
     name: Submit install plans
     needs: [generate-uuid]
-    if: ${{github.event.pull_request.merged}}
     runs-on: ubuntu-latest
     steps:
+      - name: Get PR number
+        id: get_pr_number
+        run: |
+          export PR_NUMBER=$(cat artifact/pr_number_submit.txt)
+          echo "::set-output name=pr-number::$PR_NUMBER"
+
       - name: Checkout repo
         uses: actions/checkout@v2
         # Ensure we have the most recent commit to `main`
@@ -77,7 +132,7 @@ jobs:
           NR_API_URL: ${{ secrets.NR_API_URL_STAGING }}
           NR_API_TOKEN: ${{ secrets.NR_API_TOKEN_STAGING }}
         run: |
-          URL="https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls/${{ github.event.pull_request.number }}/files"
+          URL="https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls/${{ steps.get_pr_number.outputs.pr-number }}/files"
           cd utils && yarn create-validate-install-plans $URL ${DRY_RUN}
 
       - name: Update install plans - production
@@ -85,7 +140,7 @@ jobs:
           NR_API_URL: ${{ secrets.NR_API_URL }}
           NR_API_TOKEN: ${{ secrets.NR_API_TOKEN }}
         run: |
-          URL="https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls/${{ github.event.pull_request.number }}/files"
+          URL="https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls/${{ steps.get_pr_number.outputs.pr-number }}/files"
           cd utils && yarn create-validate-install-plans $URL ${DRY_RUN}
 
       - name: Update install plans - EU
@@ -93,13 +148,12 @@ jobs:
           NR_API_URL: ${{ secrets.NR_API_URL_EU }}
           NR_API_TOKEN: ${{ secrets.NR_API_TOKEN_EU }}
         run: |
-          URL="https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls/${{ github.event.pull_request.number }}/files"
+          URL="https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls/${{ steps.get_pr_number.outputs.pr-number }}/files"
           cd utils && yarn create-validate-install-plans $URL ${DRY_RUN}
       
   submit-quickstarts:
     name: Submit quickstarts
     needs: [generate-uuid, submit-install-plans]
-    if: ${{github.event.pull_request.merged}}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
@@ -122,7 +176,7 @@ jobs:
           NR_API_URL: ${{ secrets.NR_API_URL_STAGING }}
           NR_API_TOKEN: ${{ secrets.NR_API_TOKEN_STAGING }}
         run: |
-          URL="https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls/${{ github.event.pull_request.number }}/files"
+          URL="https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls/${{ steps.get_pr_number.outputs.pr-number }}/files"
           cd utils && yarn create-validate-pr-quickstarts $URL ${DRY_RUN}
 
       - name: Update quickstarts - production
@@ -130,7 +184,7 @@ jobs:
           NR_API_URL: ${{ secrets.NR_API_URL }}
           NR_API_TOKEN: ${{ secrets.NR_API_TOKEN}}
         run: |
-          URL="https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls/${{ github.event.pull_request.number }}/files"
+          URL="https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls/${{ steps.get_pr_number.outputs.pr-number }}/files"
           cd utils && yarn create-validate-pr-quickstarts $URL ${DRY_RUN}
 
       - name: Update quickstarts - EU
@@ -138,5 +192,5 @@ jobs:
           NR_API_URL: ${{ secrets.NR_API_URL_EU }}
           NR_API_TOKEN: ${{ secrets.NR_API_TOKEN_EU }}
         run: |
-          URL="https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls/${{ github.event.pull_request.number }}/files"
+          URL="https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls/${{ steps.get_pr_number.outputs.pr-number }}/files"
           cd utils && yarn create-validate-pr-quickstarts $URL ${DRY_RUN}
