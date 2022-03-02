@@ -1,3 +1,4 @@
+const newrelic = require('newrelic');
 const path = require('path');
 const { readYamlFile, passedProcessArguments } = require('./helpers');
 const {
@@ -161,7 +162,7 @@ const createValidateUpdateInstallPlan = async (installPlanFiles) => {
 };
 
 const main = async () => {
-  const GITHUB_API_URL = passedProcessArguments()[0];
+  const [GITHUB_API_URL, isDryRun] = passedProcessArguments();
 
   const files = await fetchPaginatedGHResults(
     GITHUB_API_URL,
@@ -169,6 +170,12 @@ const main = async () => {
   );
   const installPlanFiles = filterInstallPlans(files);
   const hasFailed = await createValidateUpdateInstallPlan(installPlanFiles);
+
+  newrelic.recordCustomEvent('validate_or_update_install_plan', {
+    success: !hasFailed,
+    failure: hasFailed,
+    isDryRun: isDryRun === 'true',
+  });
 
   if (hasFailed) {
     process.exit(1);

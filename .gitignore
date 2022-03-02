@@ -4,3 +4,4 @@ utils/node_modules
 .DS_Store
 settings.json
 .env*
+**/newrelic_agent.log
