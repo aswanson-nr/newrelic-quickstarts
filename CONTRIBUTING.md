@@ -241,7 +241,27 @@ documentation:
 - All quickstarts will be set to `Community` level by default unless specified differently by the `Author`.
 - Levels can only be modified by New Relic employees.
 - If you have questions on how to increase the level of support please file an [issue](../../issues)
-- The shield icon is only applied to those quickstarts with `Support Level` New Relic OR `Support Level` Verified.
+- The shield icon is only applied to those quickstarts with support level `New Relic` OR support Level `Verified`.
+- In most cases a quickstart that is referencing an [experimental open source project](https://github.com/newrelic-experimental) should be set to the `Community` level.
+- If you are referencing an experimental project and want to set the quickstart to `Verified` please be aware of the support requirements below.
+
+**New Relic**
+
+- Verified for quality by New Relic
+- Created by New Relics employees
+- Supported by New Relic
+
+**Verified**
+
+- Verified for quality by New Relic
+- Created by New Relics employees or partners
+- Supported by individual authors or partners
+
+**Community**
+
+- Contributed & supported by the community
+- Created by community members
+- Supported by individual authors and community members
 
 
 #### Dashboard JSON
@@ -249,7 +269,7 @@ documentation:
 > See the [docs](https://github.com/newrelic/newrelic-quickstarts/blob/main/docs/graphql-schema-docs.md#nr1catalogquickstartdashboard) for more details on `dashboards`
 
 - When copying dashboard JSON from the New Relic One platform a `permissions` field is included in the code. You do not need this in a quickstart's dashboard JSON.
-- If you need to sanitize your dashboards you can run the command `yarn sanitize-dashboard` locally. This [script](https://github.com/newrelic/newrelic-quickstarts/blob/main/utils/sanitize_dashboards.js) will check and remove code that may cause an issue when submitting a PR.
+- If you need to sanitize your dashboards you can run the command `yarn sanitize-dashboard node-js/express` where the argument is the path to the dashboard directory. This [script](https://github.com/newrelic/newrelic-quickstarts/blob/main/utils/sanitize_dashboards.js) will check and remove code that may cause an issue when submitting a PR.
 - If you wish to import a quickstart's dashboard into New Relic outside of the quickstart install flow, you will need to include this `permissions` field.
 - Refer to this [documentation](https://docs.newrelic.com/docs/query-your-data/explore-query-data/dashboards/dashboards-charts-import-export-data/) on importing / exporting dashboards from the New Relic One platform.
 
@@ -260,6 +280,8 @@ documentation:
   "permissions": "PUBLIC_READ_WRITE",
 }
 ```
+
+- A dashboard's name must be unique. After providing a name in the `dashboard.json` file, you can check if your dashboard's name already exists by running `node check_dashboard_name_uniqueness` this [script](https://github.com/newrelic/newrelic-quickstarts/blob/main/utils/check_dashboard_name_uniqueness.js) will check and notify you of duplicate dashboard names in the repository.
 
 #### Dashboard screenshots
 

@@ -1,3 +1,172 @@
+## [0.112.1](https://github.com/newrelic/newrelic-quickstarts/compare/v0.112.0...v0.112.1) (2022-03-01)
+
+# [0.112.0](https://github.com/newrelic/newrelic-quickstarts/compare/v0.111.2...v0.112.0) (2022-03-01)
+
+
+### Features
+
+* new charts to comply with current solutions guide ([1ee15c9](https://github.com/newrelic/newrelic-quickstarts/commit/1ee15c91291ffba5d4a024ff2fe9e7ff171950d0))
+
+## [0.111.2](https://github.com/newrelic/newrelic-quickstarts/compare/v0.111.1...v0.111.2) (2022-03-01)
+
+
+### Bug Fixes
+
+* updates readme and contributor guide ([f8436b0](https://github.com/newrelic/newrelic-quickstarts/commit/f8436b051347e9be24f4267233aff41825a9a4e6))
+
+## [0.111.1](https://github.com/newrelic/newrelic-quickstarts/compare/v0.111.0...v0.111.1) (2022-02-25)
+
+
+### Bug Fixes
+
+* Fix spacing/indentation in validate_packs yaml ([8352b8c](https://github.com/newrelic/newrelic-quickstarts/commit/8352b8cf69a1fc59044dfb75f01e490583655fae))
+* Remove duplicate function ([8f51e79](https://github.com/newrelic/newrelic-quickstarts/commit/8f51e79096b349a6c509b692501c877f5dce7636))
+* Update imports and remove consolelogs ([794b93c](https://github.com/newrelic/newrelic-quickstarts/commit/794b93cf30c3e9ff15b7934852f71f2851b923ba))
+
+# [0.111.0](https://github.com/newrelic/newrelic-quickstarts/compare/v0.110.0...v0.111.0) (2022-02-25)
+
+
+### Bug Fixes
+
+* fix dashboard.json ([c5e02b0](https://github.com/newrelic/newrelic-quickstarts/commit/c5e02b0205563ac2f3125493cc9b21f1e0cbf9f7))
+* fixing an issue with releaseiq quickstart ([d609505](https://github.com/newrelic/newrelic-quickstarts/commit/d609505e6b8b87be17fd7c42209f1891735190e5))
+* Send support level when submitting a quickstart ([1568810](https://github.com/newrelic/newrelic-quickstarts/commit/15688101b1579dae58e856fcfa9dd0594fad7bc7))
+
+
+### Features
+
+* new quickstart-glassbox ([59d1d23](https://github.com/newrelic/newrelic-quickstarts/commit/59d1d237208f7bb358d8f49bfbcef0bdceb27ad7))
+
+# [0.110.0](https://github.com/newrelic/newrelic-quickstarts/compare/v0.109.0...v0.110.0) (2022-02-24)
+
+
+### Features
+
+* **pack:** Added new dashoard and alert ([84db08b](https://github.com/newrelic/newrelic-quickstarts/commit/84db08b11c4085cf5567ec0388e6823aaa3eac88))
+
+# [0.109.0](https://github.com/newrelic/newrelic-quickstarts/compare/v0.108.2...v0.109.0) (2022-02-24)
+
+
+### Features
+
+* **pack:** Updated aws s3 ([62556af](https://github.com/newrelic/newrelic-quickstarts/commit/62556af3acb1595a004f0b20a1b99cd6278effb1))
+* **prometheus:** added dashboards for prometheus-remote-write ([86d09cf](https://github.com/newrelic/newrelic-quickstarts/commit/86d09cf32899738789bb982ecd1d64f459d06107))
+
+## [0.108.2](https://github.com/newrelic/newrelic-quickstarts/compare/v0.108.1...v0.108.2) (2022-02-24)
+
+## [0.108.1](https://github.com/newrelic/newrelic-quickstarts/compare/v0.108.0...v0.108.1) (2022-02-24)
+
+
+### Bug Fixes
+
+* **util:** expand santization for linkedEntityGuids ([61dcb92](https://github.com/newrelic/newrelic-quickstarts/commit/61dcb92352d8c365856c40c841301e28163a280b))
+
+# [0.108.0](https://github.com/newrelic/newrelic-quickstarts/compare/v0.107.1...v0.108.0) (2022-02-24)
+
+
+### Features
+
+* Add console errors based upon if duplicate names exist ([97dc44f](https://github.com/newrelic/newrelic-quickstarts/commit/97dc44f56a3dac1c61a505b45804e48e6eb27297))
+* Add dashboard name check into workflow ([2c1a0f7](https://github.com/newrelic/newrelic-quickstarts/commit/2c1a0f7b4c4fa9130515859b2ea0f92781e17004))
+* Rename dotnet dashboard names ([b21f44d](https://github.com/newrelic/newrelic-quickstarts/commit/b21f44d8414f87f691769fe2ceae6215e0f1b804))
+* Update dashboard names Java ([4e2cde4](https://github.com/newrelic/newrelic-quickstarts/commit/4e2cde4d976e82e93ffc9a7044ecb6aafb3a6777))
+* Validation for dashboard name uniqueness ([0eeced1](https://github.com/newrelic/newrelic-quickstarts/commit/0eeced10d19c746746b385b27b2d335b57724160))
+
+
+### Reverts
+
+* Revert "chore: Update workflow description" ([5485102](https://github.com/newrelic/newrelic-quickstarts/commit/5485102b41468df297bd8bdd9c5fb88407226ae9))
+
+## [0.107.1](https://github.com/newrelic/newrelic-quickstarts/compare/v0.107.0...v0.107.1) (2022-02-23)
+
+# [0.107.0](https://github.com/newrelic/newrelic-quickstarts/compare/v0.106.0...v0.107.0) (2022-02-23)
+
+
+### Features
+
+* **pack:** Updated AWS SQS ([d0d1f78](https://github.com/newrelic/newrelic-quickstarts/commit/d0d1f78b6f08ff6de916c30775efaa04de0dab84))
+
+# [0.106.0](https://github.com/newrelic/newrelic-quickstarts/compare/v0.105.0...v0.106.0) (2022-02-22)
+
+
+### Features
+
+* Added a quickstart for ReleaseIQ ([a39cb76](https://github.com/newrelic/newrelic-quickstarts/commit/a39cb764b7482e588b8cc8cb17024affb004fab5))
+
+# [0.105.0](https://github.com/newrelic/newrelic-quickstarts/compare/v0.104.1...v0.105.0) (2022-02-19)
+
+
+### Features
+
+* Add MetricsBytes page ([425f6c9](https://github.com/newrelic/newrelic-quickstarts/commit/425f6c9d7c7a0983fb1d33d6bc5e2768c3859323))
+
+## [0.104.1](https://github.com/newrelic/newrelic-quickstarts/compare/v0.104.0...v0.104.1) (2022-02-18)
+
+
+### Bug Fixes
+
+* sets community levels updates contributing doc ([e774f33](https://github.com/newrelic/newrelic-quickstarts/commit/e774f331e9b2ce5b60eeff5a95b0184ef95c1279))
+
+# [0.104.0](https://github.com/newrelic/newrelic-quickstarts/compare/v0.103.0...v0.104.0) (2022-02-17)
+
+
+### Bug Fixes
+
+* Improved some labeles and adjusted some time series params ([42a07e9](https://github.com/newrelic/newrelic-quickstarts/commit/42a07e9d31cbd28abbd07df7a822883ac37e5398))
+
+
+### Features
+
+* add 30 day sum billboard chart ([cd2f0dc](https://github.com/newrelic/newrelic-quickstarts/commit/cd2f0dc3b115a3f3483e38087185ef7e56dd2590))
+
+# [0.103.0](https://github.com/newrelic/newrelic-quickstarts/compare/v0.102.0...v0.103.0) (2022-02-17)
+
+
+### Bug Fixes
+
+* updated queries ([353ed2c](https://github.com/newrelic/newrelic-quickstarts/commit/353ed2ca4346513083c5adbd9ac4e34483823618))
+
+
+### Features
+
+* **pack:** Updated AWS RDS ([f90bcb2](https://github.com/newrelic/newrelic-quickstarts/commit/f90bcb25eb367717be64233376b1061a13f97e07))
+
+# [0.102.0](https://github.com/newrelic/newrelic-quickstarts/compare/v0.101.0...v0.102.0) (2022-02-17)
+
+
+### Features
+
+* codestream quickstart ([9d61f8c](https://github.com/newrelic/newrelic-quickstarts/commit/9d61f8ce1587f3b58533089170e08bc830278422))
+
+# [0.101.0](https://github.com/newrelic/newrelic-quickstarts/compare/v0.100.0...v0.101.0) (2022-02-14)
+
+
+### Features
+
+* **pack:** Added DynamoDB ([9eca37e](https://github.com/newrelic/newrelic-quickstarts/commit/9eca37e42e7fca8e3b16bdc0b04a289bbdbe8d9f))
+* **pack:** Added DynamoDB ([db6c110](https://github.com/newrelic/newrelic-quickstarts/commit/db6c110a0cddd09d9cc7345a6f18fb9129fbfba6))
+
+# [0.100.0](https://github.com/newrelic/newrelic-quickstarts/compare/v0.99.3...v0.100.0) (2022-02-11)
+
+
+### Bug Fixes
+
+* format of install link ([63659e9](https://github.com/newrelic/newrelic-quickstarts/commit/63659e901de3edc4c4a45fea8c9eb5d60c14305d))
+* name battlesnake install plan to install.yml ([331a360](https://github.com/newrelic/newrelic-quickstarts/commit/331a3609ba8881997c2730cd473c31c58cbd55d1))
+
+
+### Features
+
+* added a dashboard for battlesnake-specific stats ([b6045e4](https://github.com/newrelic/newrelic-quickstarts/commit/b6045e45c6fe7abfc52b44dca93cb41ea9d1e932))
+* added battlesnake server status dashboard ([e6038d2](https://github.com/newrelic/newrelic-quickstarts/commit/e6038d2f5bfb1dad8fca301da9d983fa615fff0b))
+
+## [0.99.3](https://github.com/newrelic/newrelic-quickstarts/compare/v0.99.2...v0.99.3) (2022-02-10)
+
+
+### Bug Fixes
+
+* report job status instead of step ([3c146bd](https://github.com/newrelic/newrelic-quickstarts/commit/3c146bdb6a393f6d4c5d102cc7ed9b831a6ddc36))
+
 ## [0.99.2](https://github.com/newrelic/newrelic-quickstarts/compare/v0.99.1...v0.99.2) (2022-02-10)
 
 ## [0.99.1](https://github.com/newrelic/newrelic-quickstarts/compare/v0.99.0...v0.99.1) (2022-02-09)
