@@ -1,5 +1,5 @@
 id: unix
-displayName: Unix
+displayName: Unix test
 description: |
   The Unix monitoring integration allows for system-level monitoring of AIX,
   Linux, macOS, Solaris/SunOS and other Unix-based servers.

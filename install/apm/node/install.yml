@@ -1,5 +1,5 @@
 id: node-agent
-name: Node agent
+name: Node agent test
 title: Node agent installation
 description: Start monitoring the performance of a Node application or service by installing the New Relic Node agent.
 
