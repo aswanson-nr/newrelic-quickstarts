@@ -1,5 +1,4 @@
 id: third-party-camel
-name: Apache Camel Java Agent Extension
 title: Apache Camel Java Agent Extension
 description: |
   Java agent extension to monitor instrumentation for the Apache Camel framework.
